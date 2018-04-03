@@ -41,6 +41,8 @@ import com.wonderkiln.camerakit.CameraView;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import com.irina.tensorflowexample.Stitching;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int INPUT_SIZE = 224;
@@ -63,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_SELECT = 200;
     private String imgPath = null;
     private Bitmap bmp;
+
+    private Stitching stitcher;
+
+    // Used to load the 'native-lib' library on application startup.
+    static {
+        System.loadLibrary("mystitcher");
+        System.loadLibrary("opencv_java3");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
