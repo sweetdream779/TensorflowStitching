@@ -1,0 +1,7 @@
+
+<resources>
+    <string name="app_name">TensorFlowStitching</string>
+    <string name="toggle_camera">Toggle Camera</string>
+    <string name="segment">Get segmentation</string>
+    <string name="select">Select image</string>
+</resources>
