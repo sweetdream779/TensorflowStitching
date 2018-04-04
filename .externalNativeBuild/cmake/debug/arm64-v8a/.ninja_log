@@ -1,0 +1,5 @@
+# ninja log v5
+0	3492	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	f5336d7300861af2
+3492	12425	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	197b4e1f8825b88c
+2	3213	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	f5336d7300861af2
+3213	5478	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	197b4e1f8825b88c

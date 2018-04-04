@@ -1,0 +1,417 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/jni/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/debug/arm64-v8a --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"IlmImf-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "IlmImf",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/libIlmImf.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"libjasper-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "libjasper",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/liblibjasper.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"libjpeg-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "libjpeg",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/liblibjpeg.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"libpng-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "libpng",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/liblibpng.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"libtiff-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "libtiff",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/liblibtiff.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"libwebp-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "libwebp",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/liblibwebp.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"mystitcher-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "mystitcher",
+			"buildCommand" : "/home/irina/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/debug/arm64-v8a --target mystitcher",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --sysroot=/home/irina/Android/Sdk/ndk-bundle/sysroot  -Dmystitcher_EXPORTS -isystem /home/irina/caffe-android-lib/android_lib/opencv/sdk/native/jni/include -isystem /home/irina/caffe-android-lib/android_lib/opencv/sdk/native/jni/include/opencv -isystem /home/irina/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/irina/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/arm64-v8a/include -isystem /home/irina/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security   -O0  -fPIC    -c ",
+					"src" : "/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/jni/stitching/mystitcher_jni.cpp",
+					"workingDirectory" : "/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/debug/arm64-v8a"
+				}
+			],
+			"output" : "/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_aruco-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_aruco",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_aruco.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_bgsegm-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_bgsegm",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_bgsegm.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_bioinspired-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_bioinspired",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_bioinspired.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_calib3d-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_calib3d",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_calib3d.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_ccalib-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_ccalib",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_ccalib.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_core-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_core",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_core.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_datasets-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_datasets",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_datasets.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_dpm-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_dpm",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_dpm.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_face-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_face",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_face.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_features2d-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_features2d",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_features2d.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_flann-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_flann",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_flann.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_fuzzy-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_fuzzy",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_fuzzy.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_highgui-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_highgui",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_highgui.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_imgcodecs-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_imgcodecs",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_imgcodecs.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_imgproc-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_imgproc",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_imgproc.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_java-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_java",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_java3.so",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_line_descriptor-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_line_descriptor",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_line_descriptor.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_ml-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_ml",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_ml.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_objdetect-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_objdetect",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_objdetect.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_optflow-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_optflow",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_optflow.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_phase_unwrapping-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_phase_unwrapping",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_phase_unwrapping.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_photo-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_photo",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_photo.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_plot-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_plot",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_plot.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_reg-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_reg",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_reg.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_rgbd-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_rgbd",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_rgbd.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_saliency-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_saliency",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_saliency.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_shape-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_shape",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_shape.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_stereo-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_stereo",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_stereo.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_stitching-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_stitching",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_stitching.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_structured_light-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_structured_light",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_structured_light.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_superres-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_superres",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_superres.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_surface_matching-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_surface_matching",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_surface_matching.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_text-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_text",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_text.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_video-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_video",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_video.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_videoio-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_videoio",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_videoio.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_videostab-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_videostab",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_videostab.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_xfeatures2d-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_xfeatures2d",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_xfeatures2d.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_ximgproc-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_ximgproc",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_ximgproc.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_xobjdetect-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_xobjdetect",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_xobjdetect.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"opencv_xphoto-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "opencv_xphoto",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/libs/arm64-v8a/libopencv_xphoto.a",
+			"toolchain" : "8769055411433122400"
+		},
+		"tegra_hal-Debug-arm64-v8a" : 
+		{
+			"abi" : "arm64-v8a",
+			"artifactName" : "tegra_hal",
+			"buildType" : "debug",
+			"output" : "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/3rdparty/libs/arm64-v8a/libtegra_hal.a",
+			"toolchain" : "8769055411433122400"
+		}
+	},
+	"toolchains" : 
+	{
+		"8769055411433122400" : 
+		{
+			"cCompilerExecutable" : "/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-gcc",
+			"cppCompilerExecutable" : "/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-g++"
+		}
+	}
+}
