@@ -8,6 +8,7 @@ import android.util.Log;
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
 
 import java.io.IOException;
+import android.graphics.Color;
 
 /**
  * Created by irina on 02.04.18.
@@ -22,7 +23,7 @@ public class TensorflowSegmentator {
     private int inputSize;
 
     // Pre-allocated buffers.
-    private int[] intValues, resValues;
+    private int[] intValues;
     private float[] floatValues;
     private int[] output;
 
@@ -60,7 +61,6 @@ public class TensorflowSegmentator {
 
         // Pre-allocate buffers.
         s.intValues = new int[inputSize * inputSize];
-        s.resValues = new int[inputSize * inputSize * 3];
         s.floatValues = new float[inputSize * inputSize * 3];
         s.output = new int[inputSize * inputSize * 1];
 
@@ -77,8 +77,6 @@ public class TensorflowSegmentator {
         bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
         for (int i = 0; i < intValues.length; ++i) {
             final int val = intValues[i];
-            //COLOR_BGR2RGB
-
             floatValues[i * 3 + 0] = ((val >> 16) & 0xFF);
             floatValues[i * 3 + 1] = ((val >> 8) & 0xFF);
             floatValues[i * 3 + 2] = (val & 0xFF);
@@ -100,34 +98,17 @@ public class TensorflowSegmentator {
         TraceCompat.beginSection("fetch");
         inferenceInterface.fetch(outputName, output);
         TraceCompat.endSection();
-
+        Log.i(TAG, "Output size: " + output.length);
         // PostProcessing.
-        for (int i = 0; i < intValues.length; ++i) {
-            intValues[i] =
-                    0xFF000000
-        //                    | (((int) (output[i * 3 + 0])) << 16)
-        //                   | (((int) (output[i * 2 + 1])) << 8)
-                            | ( (int) (output[i]));
-            if(output[i * 1 + 0] > 0) {
-                resValues[i * 3 + 0] = 0xFF000000 |(int)255;
-                resValues[i * 3 + 1] = 0xFF000000 |(int)0;
-                resValues[i * 3 + 2] = 0xFF000000 |(int)0;
-            }
-            else if(output[i * 1 + 0] == 0)
-            {
-                resValues[i * 3 + 0] = 0xFF000000 |(int)0;
-                resValues[i * 3 + 1] = 0xFF000000 |(int)0;
-                resValues[i * 3 + 2] = 0xFF000000 |(int)0;
-            }
-            /*if(intValues[i]>0)
-                intValues[i] = labelColours[1];
+        for (int i = 0; i < output.length; ++i) {
+            if(output[i] == 1)
+                intValues[i] = Color.rgb(255, 0, 0);
             else
-                intValues[i] = labelColours[0];*/
-            //Log.i(TAG, "Pixel value " + intValues[i]);
+                intValues[i] = Color.rgb(0, 0, 0);
         }
 
         TraceCompat.endSection(); // "segmentImage"
-        return resValues;
+        return intValues;
     }
 
     public void close() {
