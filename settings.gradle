@@ -1,1 +1,2 @@
 include ':openCVLibrary320_2'
+rootProject.name = 'TensorflowStitching'
