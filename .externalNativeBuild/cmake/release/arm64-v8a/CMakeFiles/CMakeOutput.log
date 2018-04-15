@@ -1,5 +1,5 @@
 The target system is: Android - 1 - aarch64
-The host system is: Linux - 4.13.0-37-generic - x86_64
+The host system is: Linux - 4.13.0-38-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-gcc 
 Build flags: -isystem;/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android;-D__ANDROID_API__=21;-g;-DANDROID;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-Wa,--noexecstack;-Wformat;-Werror=format-security;
@@ -15,7 +15,7 @@ The C compiler identification is GNU, found in "/home/irina/Desktop/AndroidStudi
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-g++ 
-Build flags: -isystem;/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android;-D__ANDROID_API__=21;-g;-DANDROID;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-Wa,--noexecstack;-Wformat;-Werror=format-security;;
+Build flags: -isystem;/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android;-D__ANDROID_API__=21;-g;-DANDROID;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-std=c++11
 Id flags: -c
 
 The output was:
@@ -29,17 +29,17 @@ The CXX compiler identification is GNU, found in "/home/irina/Desktop/AndroidStu
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_f2cc0"
-[1/2] Building C object CMakeFiles/cmTC_f2cc0.dir/testCCompiler.c.o
-[2/2] Linking C executable cmTC_f2cc0
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_fdb07"
+[1/2] Building C object CMakeFiles/cmTC_fdb07.dir/testCCompiler.c.o
+[2/2] Linking C executable cmTC_fdb07
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_96bdc"
-[1/2] Building C object CMakeFiles/cmTC_96bdc.dir/CMakeCCompilerABI.c.o
-[2/2] Linking C executable cmTC_96bdc
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_89619"
+[1/2] Building C object CMakeFiles/cmTC_89619.dir/CMakeCCompilerABI.c.o
+[2/2] Linking C executable cmTC_89619
 Using built-in specs.
 COLLECT_GCC=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-gcc
 COLLECT_LTO_WRAPPER=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper
@@ -49,17 +49,17 @@ Thread model: posix
 gcc version 4.9.x 20150123 (prerelease) (GCC) 
 COMPILER_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/
 LIBRARY_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/:/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/
-COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-pie' '-fPIE' '-v' '-o' 'cmTC_96bdc' '-mlittle-endian' '-mabi=lp64'
- /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/ccycAOLV.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_96bdc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_96bdc.dir/CMakeCCompilerABI.c.o -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o
+COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-pie' '-fPIE' '-v' '-o' 'cmTC_89619' '-mlittle-endian' '-mabi=lp64'
+ /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWOUDpS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_89619 /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_89619.dir/CMakeCCompilerABI.c.o -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(aarch64-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_96bdc"]
-  ignore line: [[1/2] Building C object CMakeFiles/cmTC_96bdc.dir/CMakeCCompilerABI.c.o]
-  ignore line: [[2/2] Linking C executable cmTC_96bdc]
+  ignore line: [Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_89619"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_89619.dir/CMakeCCompilerABI.c.o]
+  ignore line: [[2/2] Linking C executable cmTC_89619]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-gcc]
   ignore line: [COLLECT_LTO_WRAPPER=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper]
@@ -69,13 +69,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.9.x 20150123 (prerelease) (GCC) ]
   ignore line: [COMPILER_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/]
   ignore line: [LIBRARY_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/:/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-pie' '-fPIE' '-v' '-o' 'cmTC_96bdc' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/ccycAOLV.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_96bdc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_96bdc.dir/CMakeCCompilerABI.c.o -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-pie' '-fPIE' '-v' '-o' 'cmTC_89619' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWOUDpS.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_89619 /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_89619.dir/CMakeCCompilerABI.c.o -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o]
     arg [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccycAOLV.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccWOUDpS.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-ldl] ==> ignore
@@ -94,7 +94,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-pie] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_96bdc] ==> ignore
+    arg [cmTC_89619] ==> ignore
     arg [/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o] ==> ignore
     arg [-L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x] ==> dir [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x]
     arg [-L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc] ==> dir [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc]
@@ -114,7 +114,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
     arg [-znocopyreloc] ==> ignore
-    arg [CMakeFiles/cmTC_96bdc.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_89619.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [-lc] ==> lib [c]
     arg [-ldl] ==> lib [dl]
@@ -137,9 +137,9 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_b9610"
-[1/2] Building C object CMakeFiles/cmTC_b9610.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_b9610
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_22ced"
+[1/2] Building C object CMakeFiles/cmTC_22ced.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_22ced
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -151,9 +151,9 @@ Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_b9
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_3d51e"
-[1/2] Building C object CMakeFiles/cmTC_3d51e.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_3d51e
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_0edcf"
+[1/2] Building C object CMakeFiles/cmTC_0edcf.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_0edcf
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -165,9 +165,9 @@ Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_3d
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_f4c2a"
-[1/2] Building C object CMakeFiles/cmTC_f4c2a.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_f4c2a
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_6d670"
+[1/2] Building C object CMakeFiles/cmTC_6d670.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_6d670
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -177,17 +177,17 @@ Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_f4
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_5eb1c"
-[1/2] Building CXX object CMakeFiles/cmTC_5eb1c.dir/testCXXCompiler.cxx.o
-[2/2] Linking CXX executable cmTC_5eb1c
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_b17f7"
+[1/2] Building CXX object CMakeFiles/cmTC_b17f7.dir/testCXXCompiler.cxx.o
+[2/2] Linking CXX executable cmTC_b17f7
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_d5dd1"
-[1/2] Building CXX object CMakeFiles/cmTC_d5dd1.dir/CMakeCXXCompilerABI.cpp.o
-[2/2] Linking CXX executable cmTC_d5dd1
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1fc36"
+[1/2] Building CXX object CMakeFiles/cmTC_1fc36.dir/CMakeCXXCompilerABI.cpp.o
+[2/2] Linking CXX executable cmTC_1fc36
 Using built-in specs.
 COLLECT_GCC=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-g++
 COLLECT_LTO_WRAPPER=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper
@@ -197,17 +197,17 @@ Thread model: posix
 gcc version 4.9.x 20150123 (prerelease) (GCC) 
 COMPILER_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/
 LIBRARY_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/:/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/
-COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-pie' '-fPIE' '-v' '-o' 'cmTC_d5dd1' '-mlittle-endian' '-mabi=lp64'
- /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8Rd2x1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_d5dd1 /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_d5dd1.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o
+COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-std=c++11' '-pie' '-fPIE' '-v' '-o' 'cmTC_1fc36' '-mlittle-endian' '-mabi=lp64'
+ /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/cccQcIRX.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_1fc36 /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_1fc36.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(aarch64-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_d5dd1"]
-  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_d5dd1.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [[2/2] Linking CXX executable cmTC_d5dd1]
+  ignore line: [Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1fc36"]
+  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_1fc36.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [[2/2] Linking CXX executable cmTC_1fc36]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-g++]
   ignore line: [COLLECT_LTO_WRAPPER=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper]
@@ -217,13 +217,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.9.x 20150123 (prerelease) (GCC) ]
   ignore line: [COMPILER_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin/]
   ignore line: [LIBRARY_PATH=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64/:/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/:/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-pie' '-fPIE' '-v' '-o' 'cmTC_d5dd1' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8Rd2x1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_d5dd1 /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_d5dd1.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-isystem' '/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android' '-D' '__ANDROID_API__=21' '-g' '-D' 'ANDROID' '-ffunction-sections' '-funwind-tables' '-fstack-protector-strong' '-Wformat=1' '-Werror=format-security' '-std=c++11' '-pie' '-fPIE' '-v' '-o' 'cmTC_1fc36' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2 -plugin /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so -plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper -plugin-opt=-fresolution=/tmp/cccQcIRX.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-ldl -plugin-opt=-pass-through=-lgcc --sysroot=/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64 --eh-frame-hdr -dynamic-linker /system/bin/linker64 -X -EL -maarch64linux --fix-cortex-a53-835769 --fix-cortex-a53-843419 -z noexecstack -z relro -z now -pie -o cmTC_1fc36 /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -L/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_1fc36.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lc -ldl -lgcc /home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtend_android.o]
     arg [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../libexec/gcc/aarch64-linux-android/4.9.x/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc8Rd2x1.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cccQcIRX.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-ldl] ==> ignore
@@ -242,7 +242,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-pie] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_d5dd1] ==> ignore
+    arg [cmTC_1fc36] ==> ignore
     arg [/home/irina/Android/Sdk/ndk-bundle/platforms/android-21/arch-arm64/usr/lib/crtbegin_dynamic.o] ==> ignore
     arg [-L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x] ==> dir [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc/aarch64-linux-android/4.9.x]
     arg [-L/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc] ==> dir [/home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/../lib/gcc]
@@ -262,7 +262,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
     arg [-znocopyreloc] ==> ignore
-    arg [CMakeFiles/cmTC_d5dd1.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_1fc36.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc] ==> lib [gcc]
@@ -287,9 +287,9 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_70f51"
-[1/2] Building CXX object CMakeFiles/cmTC_70f51.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_70f51
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1e512"
+[1/2] Building CXX object CMakeFiles/cmTC_1e512.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_1e512
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -354,9 +354,9 @@ Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_70
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_50dc4"
-[1/2] Building CXX object CMakeFiles/cmTC_50dc4.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_50dc4
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_3bfa1"
+[1/2] Building CXX object CMakeFiles/cmTC_3bfa1.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_3bfa1
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -421,9 +421,9 @@ Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_50
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/.externalNativeBuild/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_68d65"
-[1/2] Building CXX object CMakeFiles/cmTC_68d65.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_68d65
+Run Build Command:"/home/irina/Android/Sdk/cmake/3.6.4111459/bin/ninja" "cmTC_e60f6"
+[1/2] Building CXX object CMakeFiles/cmTC_e60f6.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_e60f6
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

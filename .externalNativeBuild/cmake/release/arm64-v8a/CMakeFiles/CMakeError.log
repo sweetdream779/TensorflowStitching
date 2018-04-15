@@ -14,7 +14,7 @@ collect2: error: ld returned 1 exit status
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
 Compiler: /home/irina/Android/Sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin/aarch64-linux-android-g++ 
-Build flags: -isystem;/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android;-D__ANDROID_API__=21;-g;-DANDROID;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-Wa,--noexecstack;-Wformat;-Werror=format-security;;
+Build flags: -isystem;/home/irina/Android/Sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android;-D__ANDROID_API__=21;-g;-DANDROID;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-std=c++11
 Id flags: 
 
 The output was:

@@ -46,7 +46,7 @@ CMAKE_ASM_FLAGS_RELEASE:STRING=
 CMAKE_BUILD_TYPE:STRING=Release
 
 //Flags used by the compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=
+CMAKE_CXX_FLAGS:STRING=-std=c++11
 
 //Flags used by the compiler during debug builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=

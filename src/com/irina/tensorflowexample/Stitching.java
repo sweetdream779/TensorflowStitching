@@ -11,9 +11,11 @@ public class Stitching {
         return s.getBytes(StandardCharsets.US_ASCII);
     }
 
-    public native void stitchImages(byte[] data, int width, int height, byte[] data2, int width2, int height2,long matAddr);
+    public native void stitchImages(byte[] data, int width, int height, byte[] data2,
+                                    byte[] data3, int width2, int height2, byte[] data4,
+                                    int num_homo, boolean useGdf, long matAddr);
 
-    public void StitchImages(String imgPath, String imgPath2,long matAddr) {
-        stitchImages(stringToBytes(imgPath), 0, 0, stringToBytes(imgPath2), 0, 0,matAddr);
+    public void StitchImages(String imgPath, String imgPath2, long matAddr) {
+        //stitchImages(stringToBytes(imgPath), 0, 0, stringToBytes(imgPath2), 0, 0,matAddr);
     }
 }

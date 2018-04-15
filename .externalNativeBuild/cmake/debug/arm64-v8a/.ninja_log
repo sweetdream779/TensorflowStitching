@@ -1,5 +1,17 @@
 # ninja log v5
-0	3492	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	f5336d7300861af2
-3492	12425	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	197b4e1f8825b88c
-2	3213	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	f5336d7300861af2
-3213	5478	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	197b4e1f8825b88c
+1	1584	0	CMakeFiles/mystitcher.dir/stitching/GCoptimization.cpp.o	3125b784a173ec87
+1585	1728	0	CMakeFiles/mystitcher.dir/stitching/LinkedBlockList.cpp.o	eab8762002b2fd1f
+1	43095	0	CMakeFiles/mystitcher.dir/stitching/myStitcher.cpp.o	4ede8b0a32f7700c
+1	43319	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	8521234c061aa1fc
+1	45700	0	CMakeFiles/mystitcher.dir/stitching/reconstructer.cpp.o	d62e94fb550bfb7e
+1	45771	0	CMakeFiles/mystitcher.dir/stitching/homographyManager.cpp.o	3e5f1f43d4e42b9e
+1728	45799	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	158cef631678ee3f
+1	45828	0	CMakeFiles/mystitcher.dir/stitching/graphCutsMinimizer.cpp.o	e523a24f70d625e2
+45828	52227	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	58a29729eb506478
+133	4644	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	8521234c061aa1fc
+133	5286	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	158cef631678ee3f
+5286	6407	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	58a29729eb506478
+3	4331	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	8521234c061aa1fc
+3	4815	0	CMakeFiles/mystitcher.dir/stitching/reconstructer.cpp.o	d62e94fb550bfb7e
+3	5010	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	158cef631678ee3f
+5010	6230	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	58a29729eb506478
