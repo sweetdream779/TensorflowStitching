@@ -44,24 +44,23 @@ cv::Mat imgbuf2mat(JNIEnv *env, jbyteArray buf, int width, int height) {
     return img;
 }
 
-cv::Mat getImage(JNIEnv *env, jbyteArray buf, int width, int height) {
-    return (width == 0 && height == 0) ? cv::imread(bytes2string(env, buf), -1)
-                                       : imgbuf2mat(env, buf, width, height);
+cv::Mat getImage(JNIEnv *env, jbyteArray buf, int width, int height, bool isGRAY) {
+    return (isGRAY) ? cv::imread(bytes2string(env, buf), 0): cv::imread(bytes2string(env, buf), -1);
 }
 
 
 JNIEXPORT void JNICALL
 Java_com_irina_tensorflowexample_Stitching_stitchImages(
-        JNIEnv *env, jobject thiz, jbyteArray buf, jint width, jint height, jbyteArray buf2,
-        jbyteArray buf3, jint width2, jint height2, jbyteArray buf4,
+        JNIEnv *env, jobject thiz, jbyteArray buf, jbyteArray buf2,
+        jbyteArray buf3,  jbyteArray buf4,
         jint num_homo, jboolean useGdf, jlong addrResult)
 {
     AdvanceStitcher *stitcher = AdvanceStitcher::Get(useGdf, num_homo);
     cv::Mat* pMat=(cv::Mat*)addrResult;
-    cv::Mat image1 = getImage(env, buf, width, height);
-    cv::Mat image2 = getImage(env, buf2, width, height);
-    cv::Mat seg1 = getImage(env, buf3, width2, height2);
-    cv::Mat seg2 = getImage(env, buf4, width2, height2);
+    cv::Mat image1 = getImage(env, buf, 0, 0, false);
+    cv::Mat image2 = getImage(env, buf2, 0, 0, false);
+    cv::Mat seg1 = getImage(env, buf3, 0, 0, true);
+    cv::Mat seg2 = getImage(env, buf4, 0, 0, true);
     cv::Mat result = stitcher->process(image1, image2, seg1, seg2);
     result.copyTo(*pMat);
     __android_log_print(ANDROID_LOG_VERBOSE, "Stitching", "DONE");

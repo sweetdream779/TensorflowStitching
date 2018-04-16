@@ -4,6 +4,7 @@
 #include "homographyManager.h"
 
 cv::Mat resizeImg(const cv::Mat& im, int newWidth = 600);
+cv::Mat resizeMask(const cv::Mat& im, cv::Size size);
 
 class MyStitcher
 {

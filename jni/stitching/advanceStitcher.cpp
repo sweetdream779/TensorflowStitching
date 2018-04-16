@@ -187,10 +187,8 @@ namespace stitching {
         image1 = resizeImg(image1, newWidth);
         image2 = resizeImg(image2, newWidth);
 
-
-
-        seg1 = resizeImg(seg1, newWidth);
-        seg2 = resizeImg(seg2, newWidth);
+        seg1 = resizeMask(seg1, image1.size());
+        seg2 = resizeMask(seg2, image2.size());
 
         int dilation_size = 3;
         cv::Mat element = getStructuringElement(cv::MORPH_RECT,
@@ -246,6 +244,8 @@ namespace stitching {
         else
             setStatus(SUCCESS_WITHOUT_RECONSTRCT);
         res = m_myStitcher->fill_and_crop(res, image1, image2);
+        cv::cvtColor(res, res, CV_BGR2RGB);
+        return res;
     }
 }
 /*

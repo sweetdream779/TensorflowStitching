@@ -3,5 +3,8 @@
     <string name="app_name">TensorflowStitching</string>
     <string name="toggle_camera">Toggle Camera</string>
     <string name="segment">Get segmentation</string>
+    <string name="take_photo">Take a photo</string>
     <string name="select">Select image</string>
+    <string name="stitch">Stitch images</string>
+    <string name="reset">Reset images</string>
 </resources>

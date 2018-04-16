@@ -51,6 +51,13 @@ cv::Mat resizeImg(const cv::Mat& im, int newWidth){
         return img;
     }
 
+cv::Mat resizeMask(const cv::Mat& im, cv::Size size)
+{
+    cv::Mat  img = im.clone();
+    cv::resize(img, img, size);
+    return img;
+}
+
 void visualizePoints(cv::Mat& canvas, const std::vector<cv::KeyPoint> points, const cv::Scalar color)
 {
     for(auto point: points)

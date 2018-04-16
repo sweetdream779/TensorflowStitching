@@ -102,7 +102,7 @@ public class TensorflowSegmentator {
         // PostProcessing.
         for (int i = 0; i < output.length; ++i) {
             if(output[i] == 1)
-                intValues[i] = Color.rgb(255, 0, 0);
+                intValues[i] = Color.rgb(255, 255, 255);
             else
                 intValues[i] = Color.rgb(0, 0, 0);
         }

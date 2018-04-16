@@ -16,20 +16,26 @@
 
 package com.irina.tensorflowexample;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.SeekBar;
+import android.widget.LinearLayout;
 
 import com.wonderkiln.camerakit.CameraKitError;
 import com.wonderkiln.camerakit.CameraKitEvent;
@@ -38,12 +44,20 @@ import com.wonderkiln.camerakit.CameraKitImage;
 import com.wonderkiln.camerakit.CameraKitVideo;
 import com.wonderkiln.camerakit.CameraView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import com.irina.tensorflowexample.Stitching;
 
-public class MainActivity extends AppCompatActivity {
+import org.opencv.core.Mat;
+
+import static org.opencv.android.Utils.matToBitmap;
+
+public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener{
 
     private static final int INPUT_SIZE = 224;
     private static final int IMAGE_MEAN = 117;
@@ -55,18 +69,33 @@ public class MainActivity extends AppCompatActivity {
     private static final String OUTPUT_NAME2 = "indices";
 
     private TensorflowSegmentator segmentator;
+    private Stitching stitcher;
+
     private Executor executor = Executors.newSingleThreadExecutor();
     private TextView textViewResult;
     private Button btnToggleCamera, btnSegment;
-    private Button btnSelect;
-    private ImageView imageViewResult, imageViewSegnmented;
+    private Button btnSelect, btnTakePhoto, btnReset, btnStitch;
+    private ImageView imOne, imTwo, imResult;
+    private LinearLayout imagesLayout;
     private CameraView cameraView;
     private static final String LOG_TAG = "TensorflowActivity";
     private static final int REQUEST_IMAGE_SELECT = 200;
     private String imgPath = null;
-    private Bitmap bmp;
+    private Bitmap bmp, bitmapOne, bitmapTwo;
+    private Bitmap notResized1, notResized2;
+    private Bitmap seg1, seg2;
 
-    private Stitching stitcher;
+    private TextView seekBarText;
+    private SeekBar seekBar;
+    private int homoNum;
+    private CheckBox checkBox;
+    private boolean useGdf;
+    private String path1 = null;
+    private String path2 = null;
+    private String path3 = null;
+    private String path4 = null;
+
+    private Mat resultMat;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -74,20 +103,165 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("opencv_java3");
     }
 
+    private String saveToInternalStorage(Bitmap bitmapImage){
+        ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("Dir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath=new File(directory,"profile.jpg");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+
+    public String saveImageToExternalStorage(Bitmap image, String filename) {
+        String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tensorflowStitching";;
+
+
+            File dir = new File(fullPath);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            final String fname = filename;
+            final File file = new File(dir, fname);
+            if (file.exists()) {
+                file.delete();
+            }
+            try {
+                final FileOutputStream out = new FileOutputStream(file);
+                image.compress(Bitmap.CompressFormat.PNG, 100, out);
+                out.flush();
+                out.close();
+                return file.getAbsolutePath();
+            } catch (final Exception e) {
+                Log.e("saveToExternalStorage()", e.getMessage());
+                return "";
+            }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        stitcher = new Stitching();
+        resultMat = new Mat();
         cameraView = (CameraView) findViewById(R.id.cameraView);
 
-        imageViewResult = (ImageView) findViewById(R.id.imageViewResult);
-        imageViewSegnmented = (ImageView) findViewById(R.id.ivSegmented);
+        imOne = (ImageView) findViewById(R.id.imOne);
+
+        imTwo = (ImageView) findViewById(R.id.imTwo);
+
+        imResult = (ImageView) findViewById(R.id.imResult);
 
         textViewResult = (TextView) findViewById(R.id.textViewResult);
         textViewResult.setMovementMethod(new ScrollingMovementMethod());
-
+        imagesLayout = (LinearLayout) findViewById(R.id.imagesLayout);
         btnToggleCamera = (Button) findViewById(R.id.btnToggleCamera);
         btnSegment = (Button) findViewById(R.id.btnSegment);
+        btnSegment.setEnabled(false);
+        btnSegment.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                path1 = saveImageToExternalStorage(notResized1,"image1.png");
+                path2 = saveImageToExternalStorage(notResized2,"image2.png");
+
+                textViewResult.setText("Segmentation is running, please wait.");
+                Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+
+                Bitmap bitmap1 = Bitmap.createBitmap(INPUT_SIZE2, INPUT_SIZE2, conf);
+                try {
+                    int[] res1 = segmentator.recognizeImage(bitmapOne);
+                    bitmap1.setPixels(res1, 0, INPUT_SIZE2, 0, 0, INPUT_SIZE2, INPUT_SIZE2);
+                    seg1 = bitmap1;
+                    //imOne.setImageBitmap(bitmap1);
+                    textViewResult.setText("Segmentation of first image is finished. Wait for second.");
+                }catch(Exception e){
+                    Log.d(LOG_TAG, e.getMessage());
+                    textViewResult.setText("Segmentation error");
+                }
+
+                Bitmap bitmap2 = Bitmap.createBitmap(INPUT_SIZE2, INPUT_SIZE2, conf);
+                try {
+                    int[] res2 = segmentator.recognizeImage(bitmapTwo);
+                    bitmap2.setPixels(res2, 0, INPUT_SIZE2, 0, 0, INPUT_SIZE2, INPUT_SIZE2);
+                    seg2 = bitmap2;
+                    //imTwo.setImageBitmap(bitmap2);
+                    textViewResult.setText("Segmentation is finished. Now choose parameters and press 'Stitch images' for images stritching.");
+                }catch(Exception e){
+                    Log.d(LOG_TAG, e.getMessage());
+                    textViewResult.setText("Segmentation error");
+                }
+                path3 = saveImageToExternalStorage(seg1,"segmentation1.png");
+                path4 = saveImageToExternalStorage(seg2,"segmentation2.png");
+
+                btnStitch.setEnabled(true);
+                btnSegment.setEnabled(false);
+            }
+        });
+
+        btnStitch = (Button) findViewById(R.id.btnStitch);
+        btnStitch.setEnabled(false);
+        btnStitch.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                textViewResult.setText("Stitching is running..");
+                btnReset.setEnabled(false);
+                if(checkBox.isChecked())
+                    useGdf = true;
+
+                Log.d(LOG_TAG, path1);
+                try {
+                    stitcher.StitchImages(path1, path2, path3, path4, useGdf, homoNum, resultMat.getNativeObjAddr());
+                    Bitmap bmpResult = Bitmap.createBitmap(resultMat.cols(), resultMat.rows(),Bitmap.Config.ARGB_8888);
+                    matToBitmap(resultMat, bmpResult);
+                    imagesLayout.setVisibility(View.GONE);
+                    imResult.setVisibility(View.VISIBLE);
+                    imResult.setImageBitmap(bmpResult);
+                    String pathres = saveImageToExternalStorage(bmpResult,"result.png");
+                    textViewResult.setText("Stitching is finished. Press 'Reset images to choose another couple of images.'");
+                    btnStitch.setEnabled(false);
+                }catch(Exception e){
+                    Log.d(LOG_TAG, e.getMessage());
+                    textViewResult.setText("Stitching error");
+                }
+
+                btnSegment.setEnabled(false);
+                btnReset.setEnabled(true);
+            }
+        });
+
+        btnReset = (Button) findViewById(R.id.btnReset);
+        btnReset.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                textViewResult.setText("Images were removed. Choose another.");
+                btnSegment.setEnabled(false);
+                btnStitch.setEnabled(false);
+                imResult.setVisibility(View.GONE);
+                cameraView.setVisibility(View.VISIBLE);
+                imagesLayout.setVisibility(View.GONE);
+                imOne.setImageDrawable(null);
+                imTwo.setImageDrawable(null);
+                btnSelect.setEnabled(true);
+                btnToggleCamera.setEnabled(true);
+                imResult.setImageDrawable(null);
+                btnTakePhoto.setEnabled(true);
+            }
+        });
+
+        btnTakePhoto = (Button) findViewById(R.id.btnTakePhoto);
 
         btnSelect = (Button) findViewById(R.id.btnSelect);
         btnSelect.setOnClickListener(new Button.OnClickListener() {
@@ -96,6 +270,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, REQUEST_IMAGE_SELECT);
             }
         });
+
+        seekBar = (SeekBar)findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(this);
+        homoNum = 2;//default value
+        seekBarText = (TextView)findViewById(R.id.seekBarText);
+        seekBarText.setText("Max number of homographies to use for reconstructing(1-10): " + String.valueOf(homoNum));
+        checkBox = (CheckBox)findViewById(R.id.checkBox);
+        useGdf = false;
 
         cameraView.addCameraKitListener(new CameraKitEventListener() {
             @Override
@@ -112,15 +294,26 @@ public class MainActivity extends AppCompatActivity {
             public void onImage(CameraKitImage cameraKitImage) {
 
                 Bitmap bitmap = cameraKitImage.getBitmap();
-                bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE2, INPUT_SIZE2, false);
-                imageViewResult.setImageBitmap(bitmap);
-
-                Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
-                Bitmap bitmap2 = Bitmap.createBitmap(INPUT_SIZE2, INPUT_SIZE2, conf);
-                int[] res = segmentator.recognizeImage(bitmap);
-
-                bitmap2.setPixels(res, 0, INPUT_SIZE2, 0, 0, INPUT_SIZE2, INPUT_SIZE2);
-                imageViewSegnmented.setImageBitmap(bitmap2);
+                if(imOne.getDrawable() == null) {
+                    notResized1 =  Bitmap.createScaledBitmap(bitmap, (int)Math.round(bitmap.getWidth()*0.5),
+                                                                     (int)Math.round(bitmap.getHeight()*0.5), false);
+                    bitmapOne = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE2, INPUT_SIZE2, false);
+                    imOne.setImageBitmap(bitmapOne);
+                    textViewResult.setText("First image is selected. Choose second.");
+                }
+                else if(imTwo.getDrawable() == null) {
+                    notResized2 =  Bitmap.createScaledBitmap(bitmap, (int)Math.round(bitmap.getWidth()*0.5),
+                                                                     (int)Math.round(bitmap.getHeight()*0.5), false);
+                    bitmapTwo = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE2, INPUT_SIZE2, false);
+                    imTwo.setImageBitmap(bitmapTwo);
+                    cameraView.setVisibility(View.GONE);
+                    imagesLayout.setVisibility(View.VISIBLE);
+                    btnSelect.setEnabled(false);
+                    btnToggleCamera.setEnabled(false);
+                    btnTakePhoto.setEnabled(false);
+                    btnSegment.setEnabled(true);
+                    textViewResult.setText("Second image is selected. Now press 'Get segmntation' or 'Reset images' to take new photo");
+                }
 
             }
 
@@ -137,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSegment.setOnClickListener(new View.OnClickListener() {
+        btnTakePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cameraView.captureImage();
@@ -145,6 +338,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         initTensorFlowAndLoad();
+    }
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        homoNum = seekBar.getProgress() + 1;
+        seekBarText.setText("Max number of homographies to use for reconstructing(1-10): " + String.valueOf(homoNum));
     }
 
     @Override
@@ -182,15 +390,25 @@ public class MainActivity extends AppCompatActivity {
             imgPath = cursor.getString(columnIndex);
             cursor.close();
             bmp = BitmapFactory.decodeFile(imgPath);
-            bmp = Bitmap.createScaledBitmap(bmp, INPUT_SIZE2, INPUT_SIZE2, false);
-            imageViewResult.setImageBitmap(bmp);
+            if(imOne.getDrawable() == null) {
+                notResized1 =  Bitmap.createScaledBitmap(bmp, (int)Math.round(bmp.getWidth()*0.5), (int)Math.round(bmp.getHeight()*0.5), false);
+                bitmapOne = Bitmap.createScaledBitmap(bmp, INPUT_SIZE2, INPUT_SIZE2, false);
+                imOne.setImageBitmap(bitmapOne);
+                textViewResult.setText("First image is selected. Choose second.");
+            }
+            else if(imTwo.getDrawable() == null) {
+                notResized2 =  Bitmap.createScaledBitmap(bmp, (int)Math.round(bmp.getWidth()*0.5), (int)Math.round(bmp.getHeight()*0.5), false);
+                bitmapTwo = Bitmap.createScaledBitmap(bmp, INPUT_SIZE2, INPUT_SIZE2, false);
+                imTwo.setImageBitmap(bitmapTwo);
+                btnSelect.setEnabled(false);
+                btnToggleCamera.setEnabled(false);
+                btnTakePhoto.setEnabled(false);
+                cameraView.setVisibility(View.GONE);
+                imagesLayout.setVisibility(View.VISIBLE);
+                btnSegment.setEnabled(true);
+                textViewResult.setText("Second image is selected. Now press 'Get segmntation' or 'Reset images' to take new photo");
+            }
             Log.d(LOG_TAG, imgPath);
-
-            int[] res = segmentator.recognizeImage(bmp);
-            Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
-            Bitmap bitmap2 = Bitmap.createBitmap(INPUT_SIZE2, INPUT_SIZE2, conf);
-            bitmap2.setPixels(res, 0, INPUT_SIZE2, 0, 0, INPUT_SIZE2, INPUT_SIZE2);
-            imageViewSegnmented.setImageBitmap(bitmap2);
 
         } else {
             btnSelect.setEnabled(true);

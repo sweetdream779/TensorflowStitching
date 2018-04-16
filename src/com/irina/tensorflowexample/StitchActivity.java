@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import org.opencv.core.Mat;
 
@@ -115,7 +117,7 @@ public class StitchActivity extends Activity {
 
             if(imgPath1!=null && imgPath2!=null){
                 try {
-                    stitcher.StitchImages(imgPath1, imgPath2, resultMat.getNativeObjAddr());
+                    //stitcher.StitchImages(imgPath1, imgPath2, resultMat.getNativeObjAddr());
 
                     Bitmap bmpResult = Bitmap.createBitmap(resultMat.cols(), resultMat.rows(),Bitmap.Config.ARGB_8888);
                     matToBitmap(resultMat, bmpResult);
