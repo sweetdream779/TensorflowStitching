@@ -184,14 +184,14 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
         }
 
 		if(m_useGdf){
-			mask = cv::Mat::zeros( cv::Size(imTgt.rows, imTgt.cols), CV_8UC1 );
-			im_s = cv::Mat::zeros( cv::Size(imSrc.cols, imSrc.rows), CV_8UC3 );
+			mask = cv::Mat::zeros( cv::Size(imTgt.cols, imTgt.rows), CV_8UC1 );
+			im_s = cv::Mat::zeros( cv::Size(imTgt.cols, imTgt.rows), CV_8UC3 );
 
 			//copy rect
 			cv::Rect re = boundingRect(data.maskPoints);
 			cv::Mat part = transformedSrcImgs[data.mainHomo](re);
 			cv::Mat roi1(im_s, re);
-    		part.copyTo(roi1);
+			part.copyTo(roi1);
 		}
 		for(int i = 0; i < data.points.size(); ++i)
 		{
@@ -199,36 +199,34 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 			cv::Vec3b newValue = getColor(transformedSrcImgs[homoInd], data.points[i]);
 			if(m_useGdf)
 				im_s.at<cv::Vec3b>(cv::Point(data.points[i].x, data.points[i].y)) = newValue;
-			
+
 			if(data.needTransforms[i])
 			{
 				//if copied pixel from the srcImage is a pixel of another person
 				for(int ds = 0; ds < datasSrc.size(); ++ds)
 				{
-					if( ((float)srcRectPoints[ds][homoInd][0] < data.points[i].x && data.points[i].x < (float)srcRectPoints[ds][homoInd][1]) 
-					  ||((float)srcRectPoints[ds][homoInd][2] < data.points[i].x && data.points[i].x < (float)srcRectPoints[ds][homoInd][3]) )
+					if( ((float)srcRectPoints[ds][homoInd][0] < data.points[i].x && data.points[i].x < (float)srcRectPoints[ds][homoInd][1])
+						||((float)srcRectPoints[ds][homoInd][2] < data.points[i].x && data.points[i].x < (float)srcRectPoints[ds][homoInd][3]) )
 					{
 						//std::cout<<"Reconstruct failed"<<std::endl;
 						return imTgt;
 					}
 				}
+				if(m_useGdf)
+					mask.at<uchar>(cv::Point(data.points[i].x, data.points[i].y)) = 255;
 				result.at<cv::Vec3b>(cv::Point(data.points[i].x, data.points[i].y)) = newValue;
 			}
 		}
-		if(m_useGdf)
-			for(cv::Point2f& pt: data.maskPoints){
-				mask.at<int>(cv::Point(pt.x, pt.y)) = 1;
-			}
-
-		if(m_useGdf){
-			//run gradient domain fusion
-			//cv::imshow("before gradient domain fusion", result);
-			gradientDomainFusion(data.maskPoints, mask, im_s, result, result);
-		}
-		//cv::imshow("result", result);
-		answer = true;
-		return result;
 	}
+	if(m_useGdf){
+		//run gradient domain fusion
+		//cv::imshow("before gradient domain fusion", result);
+		//std::cout<<"Now run poison image edditing"<<std::endl;
+		blend::seamlessBlend(im_s, imTgt, mask, result);
+	}
+	//cv::imshow("result", result);
+	answer = true;
+	return result;
 }
 
 cv::Mat Reconstructer::reconstructWithAdding(const cv::Mat& homo, std::vector <DataForMinimizer>& datas, std::vector <DataForMinimizer>& datasTgt,

@@ -19,11 +19,12 @@ cmake_minimum_required(VERSION 3.4.1)
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 
+set(EIGEN_INCLUDE_DIR "eigen" CACHE PATH "Where is the include directory of Eigen located")
 include_directories(/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/jni/include)
 set(OpenCV_DIR "/home/irina/caffe-android-lib/android_lib/opencv/sdk/native/jni")
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
-include_directories(stitching/include/)
+include_directories("stitching/include/" ${EIGEN_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS} "stitching/poison_im_editing_inc" )
 
 set(SOURCE_FILES
             stitching/homographyManager.cpp
@@ -34,6 +35,16 @@ set(SOURCE_FILES
             stitching/LinkedBlockList.cpp
             stitching/advanceStitcher.cpp
     )
+add_library(blend
+	stitching/poison_im_editing_inc/blend/poisson_solver.h
+	stitching/poison_im_editing_inc/blend/clone.h
+	stitching/poison_im_editing_inc/blend/blend.h
+	stitching/poison_im_editing_src/poisson_solver.cpp
+	stitching/poison_im_editing_src/clone.cpp
+	stitching/poison_im_editing_src/blend.cpp
+)
+target_link_libraries(blend ${OpenCV_LIBS})
+
 add_library( mystitcher SHARED stitching/mystitcher_jni.cpp ${SOURCE_FILES} )
 
 
@@ -43,4 +54,4 @@ find_library( # Sets the name of the path variable.
               # Specifies the name of the NDK library that
               # you want CMake to locate.
               log )
-target_link_libraries( mystitcher ${log-lib} ${OpenCV_LIBS})
+target_link_libraries( mystitcher ${log-lib} ${OpenCV_LIBS} blend)
