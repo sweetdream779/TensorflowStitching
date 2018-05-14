@@ -14,3 +14,7 @@
 349093	366536	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	25d3987c3aeb2653
 165	5026	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	af0c2d5ef3ef6eaa
 5026	7564	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	25d3987c3aeb2653
+2	48864	0	CMakeFiles/mystitcher.dir/stitching/mystitcher_jni.cpp.o	dd4ad6138f685762
+3	48907	0	CMakeFiles/mystitcher.dir/stitching/myStitcher.cpp.o	65c08c5c0f9d12d8
+3	48919	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	af0c2d5ef3ef6eaa
+48919	65018	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	25d3987c3aeb2653

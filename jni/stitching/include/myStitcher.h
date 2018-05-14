@@ -28,7 +28,7 @@ protected:
     HomographyManager homoManager;
     cv::Mat m_mainHomo;
 
-    void detect_and_compute(const cv::Mat& frame, std::vector<cv::KeyPoint> *kps, cv::Mat* descs);
+    void detect_and_compute(const cv::Mat& frame, std::vector<cv::KeyPoint> &kps, cv::Mat& descs);
 
     void visualize(cv::Mat& frame1, const std::vector<cv::KeyPoint> points1,
                    cv::Mat& frame2, const std::vector<cv::KeyPoint> points2, const cv::Scalar color);

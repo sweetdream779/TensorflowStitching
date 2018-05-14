@@ -40,8 +40,8 @@ namespace stitching {
             //Ptr<GFTTDetector> detector=GFTTDetector::create();
 
             Ptr<SURF> detector = SURF::create(400);
-            Ptr<BriefDescriptorExtractor> extractor = BriefDescriptorExtractor::create();
-            Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create("BruteForce-Hamming");
+            Ptr<SurfDescriptorExtractor> extractor = SurfDescriptorExtractor::create();
+            Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create("FlannBased");
 
             m_myStitcher = new MyStitcher(detector, matcher, extractor);
             m_reconstructer = new Reconstructer(m_useGdf, m_homoNum);

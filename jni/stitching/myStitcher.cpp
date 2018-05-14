@@ -33,12 +33,12 @@ void getDifferences(const cv::Mat& im1, const cv::Mat& im2){
 }
 
 
-void MyStitcher::detect_and_compute(const cv::Mat& frame, std::vector<cv::KeyPoint> *kp, cv::Mat* desc){
-    detector->detect(frame,*kp);
+void MyStitcher::detect_and_compute(const cv::Mat& frame, std::vector<cv::KeyPoint>& kp, cv::Mat& desc){
+    detector->detect(frame,kp);
 
-    if(!kp->empty())
-        extractor->compute(frame, *kp, *desc);
-    //std::cout<<"kp: "<<kp->size()<<std::endl;
+    if(!kp.empty())
+        extractor->compute(frame, kp, desc);
+    std::cout<<"kp: "<<kp.size()<<std::endl;
 }
 
 cv::Mat resizeImg(const cv::Mat& im, int newWidth){
@@ -96,11 +96,11 @@ cv::Mat MyStitcher::stitch(const cv::Mat& img2, const cv::Mat& img1,
     double ratio;
     Rect2d rect_for_searching;
 
-    detect_and_compute(image1,&kp1,&desc1);
-    detect_and_compute(image2,&kp2,&desc2);
+    detect_and_compute(image1,kp1,desc1);
+    detect_and_compute(image2,kp2,desc2);
 
     std::vector< vector<cv::DMatch> > matches;
-    matcher->knnMatch(desc1, desc2, matches, 2); //дольше всех, другие матчинги????
+    matcher->knnMatch(desc1, desc2, matches, 2);
     //std::cout<<"matches: "<<matches.size()<<std::endl;
     for(unsigned i = 0; i < matches.size(); i++) {
         //0.8: David Lowe’s ratio test for false-positive match pruning
