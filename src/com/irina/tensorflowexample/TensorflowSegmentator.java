@@ -67,7 +67,7 @@ public class TensorflowSegmentator {
         return s;
     }
 
-    public int[] recognizeImage(final Bitmap bitmap) {
+    public int[] getSegmentation(final Bitmap bitmap) {
         // Log this method so that it can be analyzed with systrace.
         TraceCompat.beginSection("segmentImage");
 

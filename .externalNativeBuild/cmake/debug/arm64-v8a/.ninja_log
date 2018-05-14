@@ -12,3 +12,5 @@
 121373	322449	0	CMakeFiles/mystitcher.dir/stitching/graphCutsMinimizer.cpp.o	ccbab235e56c4cf3
 296005	349093	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	af0c2d5ef3ef6eaa
 349093	366536	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	25d3987c3aeb2653
+165	5026	0	CMakeFiles/mystitcher.dir/stitching/advanceStitcher.cpp.o	af0c2d5ef3ef6eaa
+5026	7564	0	/home/irina/Desktop/AndroidStudioProjects/TensorflowStitching/build/intermediates/cmake/debug/obj/arm64-v8a/libmystitcher.so	25d3987c3aeb2653

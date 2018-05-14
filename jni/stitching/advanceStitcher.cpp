@@ -80,7 +80,7 @@ std::vector<cv::Point2f> getBoundary(const cv::Mat& croppedimg, const cv::Rect& 
     return points;
 }
 
-int FindBlobs(const cv::Mat &img, std::vector <DataForMinimizer>& datas, int borderX, bool use_gdf, bool rigth_im = false)
+int findBlobs(const cv::Mat &img, std::vector <DataForMinimizer>& datas, int borderX, bool use_gdf, bool rigth_im = false)
 {
     datas.clear();
     cv::Mat binary;
@@ -212,11 +212,11 @@ namespace stitching {
         }
         //find connected components on ipm
         std::vector<DataForMinimizer> data1;
-        int onBorder1 = FindBlobs(seg1, data1, borderX1, m_useGdf, false);
+        int onBorder1 = findBlobs(seg1, data1, borderX1, m_useGdf, false);
         //std::cout<<"Blobs on joint from image1: "<<onBorder1<<" ,all: "<< data1.size()<<std::endl;
 
         std::vector<DataForMinimizer> data2;
-        int onBorder2 = FindBlobs(seg2, data2, borderX2, false, true);
+        int onBorder2 = findBlobs(seg2, data2, borderX2, false, true);
         //std::cout<<"Blobs on joint from image2: "<<onBorder2<<" ,all: "<<data2.size()<<std::endl;
 
         //remove blob

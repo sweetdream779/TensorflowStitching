@@ -40,6 +40,7 @@ def nativeBuildSystem = 'cmake'
 // The CMake build has only been tested with armeabi-v7a; others may not work.
 //def cpuType = 'armeabi-v7a'
 def cpuType = 'arm64-v8a'
+//def cpuType = 'x86_64'
 
 // Output directory in the local directory for packaging into the APK.
 def nativeOutDir = 'libs/' + cpuType

@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         textViewResult = (TextView) findViewById(R.id.textViewResult);
         textViewResult.setMovementMethod(new ScrollingMovementMethod());
+        textViewResult.setText("Please take a photo or select one");
         imagesLayout = (LinearLayout) findViewById(R.id.imagesLayout);
         btnToggleCamera = (Button) findViewById(R.id.btnToggleCamera);
         btnSegment = (Button) findViewById(R.id.btnSegment);
@@ -184,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
                 Bitmap bitmap1 = Bitmap.createBitmap(INPUT_SIZE2, INPUT_SIZE2, conf);
                 try {
-                    int[] res1 = segmentator.recognizeImage(bitmapOne);
+                    int[] res1 = segmentator.getSegmentation(bitmapOne);
                     bitmap1.setPixels(res1, 0, INPUT_SIZE2, 0, 0, INPUT_SIZE2, INPUT_SIZE2);
                     seg1 = bitmap1;
                     //imOne.setImageBitmap(bitmap1);
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
                 Bitmap bitmap2 = Bitmap.createBitmap(INPUT_SIZE2, INPUT_SIZE2, conf);
                 try {
-                    int[] res2 = segmentator.recognizeImage(bitmapTwo);
+                    int[] res2 = segmentator.getSegmentation(bitmapTwo);
                     bitmap2.setPixels(res2, 0, INPUT_SIZE2, 0, 0, INPUT_SIZE2, INPUT_SIZE2);
                     seg2 = bitmap2;
                     //imTwo.setImageBitmap(bitmap2);

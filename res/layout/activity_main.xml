@@ -143,7 +143,7 @@
                 android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Use gradient domain fusion" />
+                android:text="Use seamless blending" />
             <TextView
                 android:id="@+id/seekBarText"
                 android:layout_width="wrap_content"
