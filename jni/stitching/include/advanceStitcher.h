@@ -22,6 +22,7 @@ namespace stitching {
         static AdvanceStitcher *Get(bool use_gdf, int homoNum);
         cv::Mat process(cv::Mat image1, cv::Mat image2, cv::Mat seg1, cv::Mat seg2);
         Status getStatus(){return m_status;}
+        //changeParameters
 
     private:
         static AdvanceStitcher * advance_stitcher;

@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         });
 
         btnStitch = (Button) findViewById(R.id.btnStitch);
-        btnStitch.setEnabled(false);
+        //btnStitch.setEnabled(false);
         btnStitch.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 textViewResult.setText("Stitching is running..");
@@ -223,9 +223,17 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                 if(checkBox.isChecked())
                     useGdf = true;
 
-                Log.d(LOG_TAG, path1);
+                Log.d(LOG_TAG, "PATH: " +path1);
                 try {
+                    Log.d(LOG_TAG, "PATH: " +path2);
+                    Log.d(LOG_TAG, "PATH: " +path3);
+                    Log.d(LOG_TAG, "PATH: " +path4);
+                    long startTime = System.nanoTime();
                     stitcher.StitchImages(path1, path2, path3, path4, useGdf, homoNum, resultMat.getNativeObjAddr());
+                    long elapsedTime = System.nanoTime() - startTime;
+                    double seconds = (double)elapsedTime / 1000000000.0;
+                    Log.i("STITCHING", "Time taken: " + seconds + " seconds");
+
                     Bitmap bmpResult = Bitmap.createBitmap(resultMat.cols(), resultMat.rows(),Bitmap.Config.ARGB_8888);
                     matToBitmap(resultMat, bmpResult);
                     imagesLayout.setVisibility(View.GONE);
@@ -233,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                     imResult.setImageBitmap(bmpResult);
                     String pathres = saveImageToExternalStorage(bmpResult,"result.png");
                     textViewResult.setText("Stitching is finished. Press 'Reset images to choose another couple of images.'");
-                    btnStitch.setEnabled(false);
+                    //btnStitch.setEnabled(false);
                 }catch(Exception e){
                     Log.d(LOG_TAG, e.getMessage());
                     textViewResult.setText("Stitching error");
@@ -249,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             public void onClick(View v) {
                 textViewResult.setText("Images were removed. Choose another.");
                 btnSegment.setEnabled(false);
-                btnStitch.setEnabled(false);
+                //btnStitch.setEnabled(false);
                 imResult.setVisibility(View.GONE);
                 cameraView.setVisibility(View.VISIBLE);
                 imagesLayout.setVisibility(View.GONE);
@@ -309,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                     imTwo.setImageBitmap(bitmapTwo);
                     cameraView.setVisibility(View.GONE);
                     imagesLayout.setVisibility(View.VISIBLE);
-                    btnSelect.setEnabled(false);
+                    //btnSelect.setEnabled(false);
                     btnToggleCamera.setEnabled(false);
                     btnTakePhoto.setEnabled(false);
                     btnSegment.setEnabled(true);
@@ -396,20 +404,30 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                 bitmapOne = Bitmap.createScaledBitmap(bmp, INPUT_SIZE2, INPUT_SIZE2, false);
                 imOne.setImageBitmap(bitmapOne);
                 textViewResult.setText("First image is selected. Choose second.");
+                path1 = imgPath;
             }
             else if(imTwo.getDrawable() == null) {
                 notResized2 =  Bitmap.createScaledBitmap(bmp, (int)Math.round(bmp.getWidth()*0.5), (int)Math.round(bmp.getHeight()*0.5), false);
                 bitmapTwo = Bitmap.createScaledBitmap(bmp, INPUT_SIZE2, INPUT_SIZE2, false);
                 imTwo.setImageBitmap(bitmapTwo);
-                btnSelect.setEnabled(false);
+                //btnSelect.setEnabled(false);
                 btnToggleCamera.setEnabled(false);
                 btnTakePhoto.setEnabled(false);
                 cameraView.setVisibility(View.GONE);
                 imagesLayout.setVisibility(View.VISIBLE);
                 btnSegment.setEnabled(true);
                 textViewResult.setText("Second image is selected. Now press 'Get segmntation' or 'Reset images' to take new photo");
+                path2 = imgPath;
             }
-            Log.d(LOG_TAG, imgPath);
+            else if(path3 == null){
+                path3 = imgPath;
+                Log.d(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!PATH: " + imgPath);
+            }
+            else if(path4 == null){
+                path4 = imgPath;
+                Log.d(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!PATH: " +imgPath);
+            }
+            //Log.d(LOG_TAG, imgPath);
 
         } else {
             btnSelect.setEnabled(true);

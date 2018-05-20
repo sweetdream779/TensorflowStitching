@@ -81,6 +81,24 @@ std::vector<cv::Point2f> getBoundary(const cv::Mat& croppedimg, const cv::Rect& 
     return points;
 }
 
+void changeRect(cv::Rect& rect, const cv::Mat& img)
+{
+    if(rect.x - 1 > 0)
+    {
+        rect.x-=1;
+        rect.width+=1;
+    }
+    if(rect.y -1 > 0){
+        rect.y-=1;
+        rect.height +=1;
+    }
+    if(rect.x + rect.width + 1 < img.cols){
+        rect.width+=1;
+    }
+    if(rect.y + rect.height + 1 < img.rows)
+        rect.height+=1;
+}
+
 int findBlobs(const cv::Mat &img, std::vector <DataForMinimizer>& datas, int borderX, bool use_gdf, bool rigth_im = false)
 {
     datas.clear();
@@ -106,6 +124,7 @@ int findBlobs(const cv::Mat &img, std::vector <DataForMinimizer>& datas, int bor
 
             cv::Rect rect;
             cv::floodFill(label_image, cv::Point(x,y), label_count, &rect, 0, 0, 4);
+            changeRect(rect, img);
             DataForMinimizer data;
             data.onBorder = false;
             if(rect.x <= borderX && rect.x+rect.width >= borderX)

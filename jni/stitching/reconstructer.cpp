@@ -175,6 +175,7 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 	{
 		if(!data.onBorder)
 			continue;
+        __android_log_print(ANDROID_LOG_DEBUG, "Stitching", "START minimizing with %ld homos", m_homoNum);
 		START_TIMER
 		if(homoSet.size()>=2)
 		    minimizer.optimize(transformedSrcImgs, imTgt, data, homoSet);
@@ -195,6 +196,7 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 			cv::Mat roi1(im_s, re);
 			part.copyTo(roi1);
 		}
+        __android_log_print(ANDROID_LOG_DEBUG, "Stitching", "START reconstructing with %ld points", data.points.size());
 		for(int i = 0; i < data.points.size(); ++i)
 		{
 			int homoInd = data.homoIdxs[i];
@@ -248,6 +250,7 @@ cv::Mat Reconstructer::reconstructWithAdding(const cv::Mat& homo, const cv::Mat&
 			continue;
 		std::vector<cv::Point2f> pts;
 		cv::Vec3b newValue;
+        __android_log_print(ANDROID_LOG_DEBUG, "Stitching", "START reconstructing with %ld points", data.points.size());
         for(cv::Point2f& pt: data.points)
         {
             if(pt.x < 0 || pt.x >= imageTgt.cols || pt.y < 0 || pt.y >= imageTgt.rows)
@@ -277,7 +280,7 @@ cv::Mat Reconstructer::reconstructWithAdding(const cv::Mat& homo, const cv::Mat&
         cv::Rect rect(0, 0, imageTgt.cols, imageTgt.rows);
         cv::Mat croppedRes(res, rect);
 
-        blend::seamlessBlend(croppedRes, imageTgt, mask, result);
+        blend::seamlessBlend(croppedRes, result, mask, result);
 		STOP_TIMER("blending")
     }
 	//cv::imshow("ress",ress);
