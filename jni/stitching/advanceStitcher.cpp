@@ -4,6 +4,7 @@
 
 #include "advanceStitcher.h"
 #include <android/log.h>
+#include "timer.h"
 
 std::vector<cv::Point2f> findPointsOnBoundary(cv::Mat& img, const cv::Rect& r, const cv::Mat& src)
 {
@@ -182,6 +183,8 @@ namespace stitching {
     cv::Mat
     AdvanceStitcher::process(cv::Mat image1, cv::Mat image2, cv::Mat seg1, cv::Mat seg2)
     {
+        __android_log_print(ANDROID_LOG_DEBUG, "Stitching", "starting...");
+        INIT_TIMER
         cv::Mat res, vis;
         int newWidth = 600;
         image1 = resizeImg(image1, newWidth);
@@ -202,24 +205,31 @@ namespace stitching {
 
         int borderX2;
         std::vector<cv::KeyPoint> matched1, matched2;
-
-        res = m_myStitcher->stitch(image1, image2, matched1, matched2, borderX2);
+        START_TIMER
+        res = m_myStitcher->setHomography(image1, image2, matched1, matched2);
+        STOP_TIMER("MyStitcher::setHomography")
         cv::Mat homo = m_myStitcher->getMainHomo();
         if (homo.empty()) {
             //std::cout<<"Stitching failed"<<std::endl;
             setStatus(STITCHING_FAILED);
             return res;
         }
+        cv::Mat invHomo = m_myStitcher->getMainInvHomo();
         //find connected components on ipm
         std::vector<DataForMinimizer> data1;
+        START_TIMER
         int onBorder1 = findBlobs(seg1, data1, borderX1, m_useGdf, false);
+        STOP_TIMER("findBlobs")
         //std::cout<<"Blobs on joint from image1: "<<onBorder1<<" ,all: "<< data1.size()<<std::endl;
 
         std::vector<DataForMinimizer> data2;
-        int onBorder2 = findBlobs(seg2, data2, borderX2, false, true);
+        cv::Mat transformedSeg2;
+        cv::warpPerspective(seg2, transformedSeg2, homo, cv::Size(image1.cols + image2.cols, image1.rows));
+        int onBorder2 = findBlobs(transformedSeg2, data2, borderX1, false, true);
         //std::cout<<"Blobs on joint from image2: "<<onBorder2<<" ,all: "<<data2.size()<<std::endl;
 
         //remove blob
+        START_TIMER
         if (onBorder1 > 0 && onBorder2 == 0) {
             //std::cout<<"First reconstruction"<<std::endl;
             bool answer;
@@ -233,9 +243,8 @@ namespace stitching {
                 setStatus(SUCCESS_FIRST_RECONSTRUCT_FAILED);
         }
         else if (onBorder2 > 0 && onBorder1 == 0) {
-            bool answer = false;
-            //std::cout<<"Second reconstruction"<<std::endl;
-            //image1 = m_reconstructer.reconstructWithAdding(homo, data2, data1, image1, image2, res, answer);
+            bool answer;
+            image1 = m_reconstructer->reconstructWithAdding(homo, invHomo, data2, data1, image1, image2, res, borderX1, answer);
             if(answer)
                 setStatus(SUCCESS_WITH_SECOND_RECONSTRUCT);
             else
@@ -243,8 +252,12 @@ namespace stitching {
         }
         else
             setStatus(SUCCESS_WITHOUT_RECONSTRCT);
-        res = m_myStitcher->fill_and_crop(res, image1, image2);
+        STOP_TIMER("Reconstruct")
+        START_TIMER
+        res = m_myStitcher->stitch(res, image1, image2);
+        STOP_TIMER("stitch")
         cv::cvtColor(res, res, CV_BGR2RGB);
+
         return res;
     }
 }

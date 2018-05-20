@@ -84,8 +84,8 @@ void MyStitcher::visualize(cv::Mat& frame1, const std::vector<cv::KeyPoint> poin
     visualizePoints(frame2, points2, color);
 }
 
-cv::Mat MyStitcher::stitch(const cv::Mat& img2, const cv::Mat& img1,
-                           std::vector<cv::KeyPoint>& matched1, std::vector<cv::KeyPoint>& matched2, int& borderX)
+cv::Mat MyStitcher::setHomography(const cv::Mat& img2, const cv::Mat& img1,
+                           std::vector<cv::KeyPoint>& matched1, std::vector<cv::KeyPoint>& matched2)
 {
     cv::Mat image1 = img1.clone();
     cv::Mat image2 = img2.clone();
@@ -115,6 +115,7 @@ cv::Mat MyStitcher::stitch(const cv::Mat& img2, const cv::Mat& img1,
     homoManager.setMatchedPoints(matched1, matched2);
     cv::Mat homography = homoManager.findOneHomo(inliers1, inliers2, outliers1, outliers2);
     m_mainHomo = homography;
+    m_invHomo = homoManager.getInvertedH();
 
     cv::Mat vis;
     cv::Mat imclone1 = image1.clone();
@@ -138,21 +139,12 @@ cv::Mat MyStitcher::stitch(const cv::Mat& img2, const cv::Mat& img1,
     //stitch
     cv::Mat res;
     cv::warpPerspective(image1, res, homography, cv::Size(image2.cols + image1.cols, image2.rows));
-    
-    //find y coordinate of the joint for image1
-    std::vector<cv::Point2f> pts_in;
-    pts_in.resize(1);
-    std::vector<cv::Point2f> pts_out;
-    pts_in[0] = cv::Point2f(image2.cols, image2.rows/2);
-    cv::perspectiveTransform(pts_in, pts_out, homoManager.getInvertedH());
-    borderX = pts_out[0].x;
-    //std::cout<<pts_out[0].x<<std::endl;
 
     return res;
 }
 
 
-cv::Mat MyStitcher::fill_and_crop(cv::Mat& res, const cv::Mat& image2, const cv::Mat& image1)
+cv::Mat MyStitcher::stitch(cv::Mat& res, const cv::Mat& image2, const cv::Mat& image1)
 {
     if(m_mainHomo.empty())
         return res;

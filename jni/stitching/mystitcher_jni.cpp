@@ -63,34 +63,33 @@ Java_com_irina_tensorflowexample_Stitching_stitchImages(
     cv::Mat seg2 = getImage(env, buf4, 0, 0, true);
     cv::Mat result = stitcher->process(image1, image2, seg1, seg2);
     result.copyTo(*pMat);
-    __android_log_print(ANDROID_LOG_VERBOSE, "Stitching", "DONE");
+    __android_log_print(ANDROID_LOG_DEBUG, "Stitching", "DONE");
     Status status = stitcher->getStatus();
     switch(status){
             case Status::SUCCESS_WITHOUT_RECONSTRCT:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Stitching is successful; reconstruction was not required");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Stitching is successful; reconstruction was not required");
                 break;
             case Status::SUCCESS_WITH_FIRST_RECONSTRUCT:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Stitching is successful with reconstruction with removal");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Stitching is successful with reconstruction with removal");
                 break;
             case Status::SUCCESS_WITH_SECOND_RECONSTRUCT:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Stitching is successful with reconstruction with adding");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Stitching is successful with reconstruction with adding");
                 break;
             case Status::SUCCESS_FIRST_RECONSTRUCT_FAILED:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Stitching is successful, but reconstruction with removal failed");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Stitching is successful, but reconstruction with removal failed");
                 break;
             case Status::SUCCESS_SECOND_RECONSTRUCT_FAILED:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Stitching is successful, but reconstruction with adding failed");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Stitching is successful, but reconstruction with adding failed");
                 break;
             case Status::STITCHING_FAILED:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Stitching failed");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Stitching failed");
                 break;
             default:
-                __android_log_print(ANDROID_LOG_VERBOSE, "STITCHING STATUS ", "Recieved udefined status");
+                __android_log_print(ANDROID_LOG_DEBUG, "STITCHING STATUS ", "Recieved udefined status");
                 break;
     }
 
 }
-
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
 {
     JNIEnv* env;

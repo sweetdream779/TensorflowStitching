@@ -16,10 +16,11 @@ public:
     {
         homoManager = HomographyManager();
     }
-    cv::Mat stitch(const cv::Mat& image1, const cv::Mat& image2, std::vector<cv::KeyPoint>& matched1, 
-                                                                 std::vector<cv::KeyPoint>& matched2, int& borderX);
-    cv::Mat fill_and_crop(cv::Mat& res, const cv::Mat& image2, const cv::Mat& image1);
+    cv::Mat setHomography(const cv::Mat& image1, const cv::Mat& image2, std::vector<cv::KeyPoint>& matched1,
+                                                                 std::vector<cv::KeyPoint>& matched2);
+    cv::Mat stitch(cv::Mat& res, const cv::Mat& image2, const cv::Mat& image1);
     cv::Mat getMainHomo() {return m_mainHomo;}
+    cv::Mat getMainInvHomo() {return m_invHomo;}
     Ptr<Feature2D> getDetector() { return detector;}
 protected:
     Ptr<Feature2D> detector;
@@ -27,6 +28,7 @@ protected:
     Ptr<DescriptorMatcher> matcher;
     HomographyManager homoManager;
     cv::Mat m_mainHomo;
+    cv::Mat m_invHomo;
 
     void detect_and_compute(const cv::Mat& frame, std::vector<cv::KeyPoint> &kps, cv::Mat& descs);
 

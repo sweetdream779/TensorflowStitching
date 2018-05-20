@@ -1,8 +1,8 @@
 #include "reconstructer.h"
 
-cv::Vec3b getColor(const cv::Mat& imSrc, const cv::Point2f& pt)
+cv::Vec3b getColor(const cv::Mat& im, const cv::Point2f& pt)
 {
-	return imSrc.at<cv::Vec3b>(cv::Point(pt.x, pt.y));
+	return im.at<cv::Vec3b>(cv::Point(pt.x, pt.y));
 }
 
 void gradientDomainFusion(std::vector<cv::Point2f>& maskPoints, cv::Mat& m, cv::Mat& s, cv::Mat& t, cv::Mat& res)
@@ -146,6 +146,7 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 											  std::vector<cv::KeyPoint>& matched1, std::vector<cv::KeyPoint>& matched2,
 											  bool& answer)
 {
+	INIT_TIMER
 	answer = false;
 	//find several homographies which map source image to target coordinates
 	homoManager.findSeveralHomo(m_homoNum, matched1, matched2);
@@ -161,17 +162,20 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 	homoManager.setTransformedSrcImgs(imSrc, cv::Size(imTgt.cols + imSrc.cols, imTgt.rows));
 
 	//get rects of objects on tranfrmed src image
-	std::vector<std::vector<cv::Vec4f> > srcRectPoints = homoManager.getSrcRects(datasSrc);
+	//std::vector<std::vector<cv::Vec4f> > srcRectPoints = homoManager.getSrcRects(datasSrc);
 
 	std::vector<cv::Mat> transformedSrcImgs = homoManager.getTransformedSrcImgs();	
 	cv::Vec3b newValue;	
 	cv::Mat mask, im_s;
+	mask = cv::Mat::zeros( cv::Size(imTgt.cols, imTgt.rows), CV_8UC1 );
+	im_s = cv::Mat::zeros( cv::Size(imTgt.cols, imTgt.rows), CV_8UC3 );
 
 	cv::Mat result = imTgt.clone();
 	for(auto& data: datas)
 	{
 		if(!data.onBorder)
 			continue;
+		START_TIMER
 		if(homoSet.size()>=2)
 		    minimizer.optimize(transformedSrcImgs, imTgt, data, homoSet);
         else {
@@ -182,11 +186,9 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
             data.homoIdxs.resize(num_pixels);
             std::fill(data.homoIdxs.begin(), data.homoIdxs.end(), 0);
         }
+		STOP_TIMER("optimizer")
 
 		if(m_useGdf){
-			mask = cv::Mat::zeros( cv::Size(imTgt.cols, imTgt.rows), CV_8UC1 );
-			im_s = cv::Mat::zeros( cv::Size(imTgt.cols, imTgt.rows), CV_8UC3 );
-
 			//copy rect
 			cv::Rect re = boundingRect(data.maskPoints);
 			cv::Mat part = transformedSrcImgs[data.mainHomo](re);
@@ -203,10 +205,10 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 			if(data.needTransforms[i])
 			{
 				//if copied pixel from the srcImage is a pixel of another person
-				for(int ds = 0; ds < datasSrc.size(); ++ds)
+                for(DataForMinimizer& dataSrc: datasSrc)
 				{
-					if( ((float)srcRectPoints[ds][homoInd][0] < data.points[i].x && data.points[i].x < (float)srcRectPoints[ds][homoInd][1])
-						||((float)srcRectPoints[ds][homoInd][2] < data.points[i].x && data.points[i].x < (float)srcRectPoints[ds][homoInd][3]) )
+                    if(  (dataSrc.rect.x < data.points[i].x && data.points[i].x < dataSrc.rect.x + dataSrc.rect.width)
+                       &&(dataSrc.rect.y < data.points[i].y && data.points[i].y < dataSrc.rect.y + dataSrc.rect.height) )
 					{
 						//std::cout<<"Reconstruct failed"<<std::endl;
 						return imTgt;
@@ -222,53 +224,62 @@ cv::Mat Reconstructer::reconstructWithRemoval(cv::Mat imTgt, cv::Mat imSrc, cv::
 		//run gradient domain fusion
 		//cv::imshow("before gradient domain fusion", result);
 		//std::cout<<"Now run poison image edditing"<<std::endl;
+		START_TIMER
 		blend::seamlessBlend(im_s, imTgt, mask, result);
+		STOP_TIMER("blending")
 	}
 	//cv::imshow("result", result);
 	answer = true;
 	return result;
 }
 
-cv::Mat Reconstructer::reconstructWithAdding(const cv::Mat& homo, std::vector <DataForMinimizer>& datas, std::vector <DataForMinimizer>& datasTgt,
-							  				 const cv::Mat& imageTgt, const cv::Mat& imageSrc, const cv::Mat& res, bool& answer)
+cv::Mat Reconstructer::reconstructWithAdding(const cv::Mat& homo, const cv::Mat& invHomo, std::vector <DataForMinimizer>& datas, std::vector <DataForMinimizer>& datasTgt,
+							  				 const cv::Mat& imageTgt, const cv::Mat& imageSrc, const cv::Mat& res, int borderX, bool& answer)
 {
+	INIT_TIMER
 	answer = false;
 	if(homo.empty())
 		return imageTgt;
 	cv::Mat result = imageTgt.clone();
-	cv::Mat transformedTgt;
-	cv::warpPerspective(imageTgt, transformedTgt, homo, cv::Size(imageSrc.cols, imageSrc.rows), cv::WARP_INVERSE_MAP);
-
+    cv::Mat mask = Mat::zeros( cv::Size(imageTgt.cols, imageTgt.rows), CV_8UC1 );
 	for(auto& data: datas)
 	{
 		if(!data.onBorder)
 			continue;
 		std::vector<cv::Point2f> pts;
-		cv::Vec3b newValue;	
-		//std::cout<<data.points.size()<<std::endl;
-
-		//cv::perspectiveTransform(data.points, pts, homo);
-		for(cv::Point2f& pt: data.points)
-		{
-			/*for(DataForMinimizer& dataTgt: datasTgt)
-			{
-				//if pixel is a pixel of another person on tgtImage
-				if(dataTgt.rect.x  < pt.x && pt.x < dataTgt.rect.x + dataTgt.rect.width)
-				{
-					std::cout<<"Reconstruct failed"<<std::endl;
-					return imageTgt;
-				}
-			}*/
-			newValue = getColor(res, pt);
-			transformedTgt.at<cv::Vec3b>(cv::Point(pt.x, pt.y)) = newValue;
-		}
+		cv::Vec3b newValue;
+        for(cv::Point2f& pt: data.points)
+        {
+            if(pt.x < 0 || pt.x >= imageTgt.cols || pt.y < 0 || pt.y >= imageTgt.rows)
+                continue;
+            for(DataForMinimizer& dataTgt: datasTgt)
+            {
+                //if pixel is a pixel of another person on tgtImage
+                if(   (dataTgt.rect.x  < pt.x && pt.x < dataTgt.rect.x + dataTgt.rect.width)
+                      &&(dataTgt.rect.y  < pt.y && pt.y < dataTgt.rect.y + dataTgt.rect.height))
+                {
+                    //std::cout<<"Reconstruct failed, another object on reconstructed pixels"<<std::endl;
+                    return imageTgt;
+                }
+            }
+            newValue = getColor(res, pt);
+            result.at<cv::Vec3b>(cv::Point(pt.x, pt.y)) = newValue;
+            if(m_useGdf && pt.x < borderX){
+                mask.at<uchar>(cv::Point(pt.x, pt.y)) = 255;
+            }
+        }
 	}
-	cv::Mat ress = imageTgt.clone();
-	//cv::Mat roi1(res, Rect(0, 0,  imageTgt.cols, imageTgt.rows));
-    //image2.copyTo(roi1);
+	START_TIMER
+    if(m_useGdf){
+        //cv::imshow("before gradient domain fusion", result);
+        //std::cout<<"Now run poison image editing"<<std::endl;
 
-	cv::warpPerspective(transformedTgt, transformedTgt, homo, cv::Size(imageTgt.cols, imageTgt.rows));
-	
+        cv::Rect rect(0, 0, imageTgt.cols, imageTgt.rows);
+        cv::Mat croppedRes(res, rect);
+
+        blend::seamlessBlend(croppedRes, imageTgt, mask, result);
+		STOP_TIMER("blending")
+    }
 	//cv::imshow("ress",ress);
 	//cv::waitKey(0);
 	answer = true;

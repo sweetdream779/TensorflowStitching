@@ -9,6 +9,7 @@ import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
 
 import java.io.IOException;
 import android.graphics.Color;
+import android.util.TimingLogger;
 
 /**
  * Created by irina on 02.04.18.
@@ -68,6 +69,7 @@ public class TensorflowSegmentator {
     }
 
     public int[] getSegmentation(final Bitmap bitmap) {
+        long startTime = System.nanoTime();
         // Log this method so that it can be analyzed with systrace.
         TraceCompat.beginSection("segmentImage");
 
@@ -108,6 +110,9 @@ public class TensorflowSegmentator {
         }
 
         TraceCompat.endSection(); // "segmentImage"
+        long elapsedTime = System.nanoTime() - startTime;
+        double seconds = (double)elapsedTime / 1000000000.0;
+        Log.i(TAG, "Time taken: " + seconds + " seconds");
         return intValues;
     }
 
